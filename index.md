@@ -1,8 +1,8 @@
 
 
 ## links
-[shudu](https://xinshenghu.github.io/cocos/shudu/index.htm) 
-[pintu](https://xinshenghu.github.io/cocos/pintu/index.htm) 
+[数独](https://xinshenghu.github.io/cocos/shudu/index.htm) 
+[拼图](https://xinshenghu.github.io/cocos/pintu/index.htm) 
 
 ## Welcome to GitHub Pages
 
