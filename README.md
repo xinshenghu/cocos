@@ -1,1 +1,1 @@
-# this is game collection of cocos games
+this is game collection of cocos games
