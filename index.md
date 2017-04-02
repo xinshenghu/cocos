@@ -1,8 +1,9 @@
 
 
-## links
+## games
 [数独](https://xinshenghu.github.io/cocos/shudu/index.htm) 
 [拼图](https://xinshenghu.github.io/cocos/pintu/index.htm) 
+[爱消除](https://xinshenghu.github.io/cocos/aixiaochu/index.html) 
 
 ## Welcome to GitHub Pages
 
