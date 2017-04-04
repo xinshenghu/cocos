@@ -4,6 +4,8 @@
 [数独](https://xinshenghu.github.io/cocos/shudu/index.html) 
 [拼图](https://xinshenghu.github.io/cocos/pintu/index.html) 
 [爱消除](https://xinshenghu.github.io/cocos/aixiaochu/index.html) 
+[扫雷](https://xinshenghu.github.io/cocos/saolei/index.html) 
+[纸牌](https://xinshenghu.github.io/cocos/zhipai/index.html) 
 
 ## Welcome to GitHub Pages
 
