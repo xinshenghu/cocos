@@ -77,10 +77,13 @@ colorSprite = function (size, color) {
     return new cc.Sprite(render.getSprite().texture);
 };
 
+
+var layer1;
 var HelloWorldScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
         var layer = new HelloWorldLayer();
+        layer1=layer;
         this.addChild(layer);
     }
 });
@@ -252,8 +255,21 @@ function CheckForWin(){
 }
 
 function WonTheGame(){
-    cc.director.runScene(new scenesuccess());
+    //cc.director.runScene(new scenesuccess());
+    var label = new cc.Sprite(res.finish);
+    label.setScale(2);
+    var size = cc.winSize;
+    layer1.addChild(label);
+    label.attr({
+        x: size.width / 2,
+        y: 0,
 
+    });
+
+
+    label.runAction(
+        cc.moveTo(2, cc.p(size.width / 2, size.height / 2))
+    );
 }
 
 Array.prototype.remove = function (dx) {
