@@ -34,7 +34,7 @@ var HelloWorldLayer = cc.Layer.extend({
             //btn[i].Click += new EventHandler(btn_Click); //给按钮添加事件
             btn[i].Tag = 0;
             //this.Controls.Add(btn[i]);
-
+            btn[i].setScale(2);
             this.addChild(btn[i]);
         }
 
@@ -52,12 +52,13 @@ var HelloWorldLayer = cc.Layer.extend({
         //}
 
 
-        var helloLabel = new cc.LabelTTF("请把所有按钮变红!  要快哦! 点击一个周围四个也会变色", "Arial", 12);
+        var helloLabel = new cc.LabelTTF("请把所有按钮变红!  要快哦! 点击一个周围四个也会变色", "Arial", 25);
 
-        helloLabel.x = 100;
+
+        helloLabel.x = 200;
         helloLabel.y = size.height - 20;
 
-        this.addChild(helloLabel, 5);
+        this.addChild(helloLabel, 1);
 
 
         //重新开始
@@ -105,7 +106,7 @@ var spriteMy = cc.Sprite.extend({
         //this._super(render.getSprite().texture);
 
         this._super(res.zhuankuai);
-        color = new cc.Color(0, 255, 0);
+        color = new cc.Color(181, 114,228);
         this.setColor(color);
 
         cc.eventManager.addListener({
