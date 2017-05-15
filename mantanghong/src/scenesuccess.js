@@ -11,9 +11,7 @@ var successLayer = cc.Layer.extend({
         label.attr({
             x: size.width / 2,
             y: 0,
-            //color: cc.color.GREEN,
-            //scale:0.5,
-            //rotation:180
+
         });
 
 
