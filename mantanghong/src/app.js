@@ -106,7 +106,7 @@ var spriteMy = cc.Sprite.extend({
         //this._super(render.getSprite().texture);
 
         this._super(res.zhuankuai);
-        color = new cc.Color(181, 114,228);
+        color = new cc.Color(181, 114, 228);
         this.setColor(color);
 
         cc.eventManager.addListener({
@@ -229,7 +229,7 @@ function ChangeButtonState(i) {
             btn[i].Tag = 0;
 
             //size = new cc.Size(50, 50);
-            color = new cc.Color(0, 255, 0);
+            color = new cc.Color(181, 114,228);
             //var render = new cc.RenderTexture(size.width, size.height);
             //render.beginWithClear(color.r, color.g, color.b, color.a);
             //render.visit();
