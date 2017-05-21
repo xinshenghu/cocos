@@ -7,6 +7,7 @@
 [扫雷](https://xinshenghu.github.io/cocos/saolei/index.html) 
 [纸牌](https://xinshenghu.github.io/cocos/zhipai/index.html) 
 [满堂红](https://xinshenghu.github.io/cocos/mantanghong/index.html) 
+[华容道](https://xinshenghu.github.io/cocos/huarongdao/index.html) 
 
 ## Welcome to GitHub Pages
 
