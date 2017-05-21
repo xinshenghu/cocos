@@ -83,7 +83,7 @@ var HelloWorldScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
         var layer = new HelloWorldLayer();
-        layer1=layer;
+        layer1 = layer;
         this.addChild(layer);
     }
 });
@@ -183,8 +183,7 @@ var spriteMy = cc.Sprite.extend({
             count++;
             step += (i + 1) + " ";
 
-            if (CheckForWin() == true)
-            {
+            if (CheckForWin() == true) {
                 WonTheGame();
             }
         }
@@ -232,7 +231,7 @@ function ChangeButtonState(i) {
             btn[i].Tag = 0;
 
             //size = new cc.Size(50, 50);
-            color = new cc.Color(181, 114,228);
+            color = new cc.Color(181, 114, 228);
             //var render = new cc.RenderTexture(size.width, size.height);
             //render.beginWithClear(color.r, color.g, color.b, color.a);
             //render.visit();
@@ -242,19 +241,17 @@ function ChangeButtonState(i) {
     }
 }
 
-function CheckForWin(){
+function CheckForWin() {
 
-    for (var i = 0; i < BUTTON_COUNT; i++)
-    {
-        if (btn[i].Tag == 0)
-        {
+    for (var i = 0; i < BUTTON_COUNT; i++) {
+        if (btn[i].Tag == 0) {
             return false;
         }
     }
     return true;
 }
 
-function WonTheGame(){
+function WonTheGame() {
     //cc.director.runScene(new scenesuccess());
     var label = new cc.Sprite(res.finish);
     label.setScale(2);
