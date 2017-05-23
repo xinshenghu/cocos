@@ -108,7 +108,7 @@ var HelloWorldScene = cc.Scene.extend({
         layer1 = layer;
         this.addChild(layer);
 
-        cc.director.setClearColor(cc.color("7e","20","ff",255));     //添加的行
+        cc.director.setClearColor(cc.color("7e","20","ff",255));
     }
 });
 

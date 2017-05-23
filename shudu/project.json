@@ -1,1 +1,23 @@
-{"showFPS": true, "noCache": false, "frameRate": 60, "project_type": "javascript", "debugMode": 1, "renderMode": 0, "id": "gameCanvas"}
+{
+    "project_type": "javascript",
+
+    "debugMode" : 1,
+    "showFPS" : true,
+    "frameRate" : 60,
+    "noCache" : false,
+    "id" : "gameCanvas",
+    "renderMode" : 0,
+    "engineDir":"frameworks/cocos2d-html5",
+
+    "modules" : ["cocos2d", "ccui"],
+
+    "jsList" : [
+        "src/resource.js",
+
+
+        "src/scenesaolei.js",
+        "src/layerback.js",
+        "src/scenesuccess.js"
+
+    ]
+}
