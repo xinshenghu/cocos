@@ -13,7 +13,7 @@ var HelloWorldLayer = cc.Layer.extend({
 
     ctor: function () {
 
-        this._super();
+        this._super(cc.color(0, 0, 255, 255));
 
         var size = cc.winSize;
 
@@ -107,6 +107,8 @@ var HelloWorldScene = cc.Scene.extend({
         var layer = new HelloWorldLayer();
         layer1 = layer;
         this.addChild(layer);
+
+        cc.director.setClearColor(cc.color("7e","20","ff",255));     //添加的行
     }
 });
 
@@ -143,7 +145,6 @@ var spriteMy = cc.Sprite.extend({
 
             //i = target.Text - 1;
             ChangeButtonPosition(target); //被点击的按钮
-
 
 
             //step += (i + 1) + " ";
@@ -188,7 +189,7 @@ function ChangeButtonPosition(target) {
                 target.setPosition(quyunode.x, quyunode.y);
 
                 count++;
-                helloLabel1.setString("移动次数："+count);
+                helloLabel1.setString("移动次数：" + count);
 
             } else if (target.hang - 1 == btn[m].hang && target.lie == btn[m].lie && btn[m].Text == "0") {
                 hang = btn[m].hang;
@@ -205,7 +206,7 @@ function ChangeButtonPosition(target) {
                 target.setPosition(quyunode.x, quyunode.y);
 
                 count++;
-                helloLabel1.setString("移动次数："+count);
+                helloLabel1.setString("移动次数：" + count);
 
             } else if (target.hang == btn[m].hang && target.lie - 1 == btn[m].lie && btn[m].Text == "0") {
                 hang = btn[m].hang;
@@ -222,7 +223,7 @@ function ChangeButtonPosition(target) {
                 target.setPosition(quyunode.x, quyunode.y);
 
                 count++;
-                helloLabel1.setString("移动次数："+count);
+                helloLabel1.setString("移动次数：" + count);
 
             }
             else if (target.hang == btn[m].hang && target.lie + 1 == btn[m].lie && btn[m].Text == "0") {
@@ -240,7 +241,7 @@ function ChangeButtonPosition(target) {
                 target.setPosition(quyunode.x, quyunode.y);
 
                 count++;
-                helloLabel1.setString("移动次数："+count);
+                helloLabel1.setString("移动次数：" + count);
 
             }
         }
