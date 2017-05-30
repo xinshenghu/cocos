@@ -8,6 +8,7 @@
 [纸牌](https://xinshenghu.github.io/cocos/zhipai/index.html) 
 [满堂红](https://xinshenghu.github.io/cocos/mantanghong/index.html) 
 [华容道](https://xinshenghu.github.io/cocos/huarongdao/index.html) 
+[打地鼠](https://xinshenghu.github.io/cocos/dadishu/index.html) 
 
 ## Welcome to GitHub Pages
 
