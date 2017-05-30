@@ -632,9 +632,6 @@ var spriteanjian = cc.Sprite.extend({
 });
 
 
-
-
-
 var spritetimer = cc.Sprite.extend({
     fen: 0,
     time: 0,
@@ -642,7 +639,7 @@ var spritetimer = cc.Sprite.extend({
     ctor: function () {
         this._super();
         //this.schedule();
-        this.helloLabel = new cc.LabelTTF("" + this.time, "Arial", 38);
+        this.helloLabel = new cc.LabelTTF(this.fen + "分" + this.time + "秒", "Arial", 38);
         this.helloLabel.setColor(cc.color.WHITE);
         this.addChild(this.helloLabel);
         this.schedule(this.do, 1);

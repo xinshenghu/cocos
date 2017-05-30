@@ -14,7 +14,7 @@ var backLayer = cc.Layer.extend({
         //menu.addChild(back1);
         menu.setPosition(0, 0);
         this.addChild(menu);
-        this.loadTextFiled();
+        //this.loadTextFiled();
 
         //var node = new ccui.TextField("请输入账号：", "Arial", 30);
         //this.addChild(node);

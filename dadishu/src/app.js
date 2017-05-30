@@ -1,3 +1,4 @@
+var size = null;
 BUTTON_COUNT = 16;
 SQUARE_ROOT = Math.sqrt(BUTTON_COUNT);
 PART_COUNT = 2 * Math.sqrt(BUTTON_COUNT) + 1;
@@ -8,6 +9,12 @@ var count = 0;
 //step = "";
 var helloLabel1;
 
+//共有的对象
+var fenshu = null;
+var jishi = null;
+//var HelloWorldLayer;
+
+
 var HelloWorldLayer = cc.Layer.extend({
     sprite: null,
 
@@ -15,95 +22,53 @@ var HelloWorldLayer = cc.Layer.extend({
 
         this._super();
 
-        var size = cc.winSize;
+        size = cc.winSize;
 
+        //背景
         var bg = cc.Sprite.create(res.bg);
-        bg.setScale(4);
+        bg.setScale(2);
         bg.setPosition(size.width / 2, size.height / 2);
         this.addChild(bg, 0);
 
+        //计时
+        jishi = new spritetimer();
+        jishi.setPosition(120, size.height - 50);
+        this.addChild(jishi);
 
-        var left = 100;
-        var top = 800;
-
-        var hang = 0;
-        var lie = 0;
-
-        for (var i = 0; i < BUTTON_COUNT; i++) {
-
-            btn[i] = new spriteMy();
-            btn[i].addtext(16 - (i + 1));
-            //用text判断是否是隐藏的 text==16
-            btn[i].Text = 16 - (i + 1);
-
-
-            //还需要记住上下左右的点才能交换
-
-
-            if (i % 4 == 0) {
-                left = 100;
-                top = top - btn[i].height * 2;
-                hang++;
-                lie = 1;
-
-            } else {
-                left = left + btn[i].width * 2;
-                lie++;
-            }
-
-
-            btn[i].hang = hang;
-            btn[i].lie = lie;
-
-            btn[i].Left = left;
-            btn[i].Top = top;
-
-
-            btn[i].setPosition(btn[i].Left, btn[i].Top);
-            //btn[i].BackColor = Color.SeaGreen;
-            //btn[i].Text = Convert.ToString(i + 1);
-            //btn[i].Click += new EventHandler(btn_Click); //给按钮添加事件
-            //btn[i].Tag = 0;
-            //this.Controls.Add(btn[i]);
-            btn[i].setScale(2);
-
-            if (i == 15) {
-                btn[i].setVisible(false);
-
-            }
-
-            this.addChild(btn[i]);
-        }
-
-
-        var helloLabel = new cc.LabelTTF("请移动到正确位置 1-15", "Arial", 25);
-        helloLabel.x = 230;
-        helloLabel.y = size.height - 30;
-
-        this.addChild(helloLabel, 1);
-
-        helloLabel1 = new cc.LabelTTF("移动次数：", "Arial", 25);
-        helloLabel1.x = 230;
-        helloLabel1.y = size.height - 600;
-
-        this.addChild(helloLabel1, 1);
-
+        //几分
+        fenshu = new spritefenshu();
+        fenshu.setPosition(420, size.height - 50);
+        this.addChild(fenshu);
 
         //重新开始
         var back = new backLayer();
         this.addChild(back);
 
+        //地鼠的精灵我要给个随机位置show出来。时间可以是固定的。这里要给一个开始停止，
+        this.schedule(this.do, 1);
+
+
         return true;
+    },
+    do: function () {
+        var a = new spriteMy();
+        var x = Math.random() * size.width;
+        var y = Math.random() * size.height;
+        if (y < 200) {
+            y = 200;
+        } else if (y > 750) {
+            y = 750;
+        }
+        a.setPosition(x, y
+        );
+        this.addChild(a);
+    },
+    undo: function () {
+        this.unscheduleAllCallbacks();
+        //this.schedule(this.onUnscheduleAll, 4);
+        //this.unschedule(this.do);
     }
 });
-
-colorSprite = function (size, color) {
-    var render = new cc.RenderTexture(size.width, size.height);
-    render.beginWithClear(color.r, color.g, color.b, color.a);
-    render.visit();
-    render.end();
-    return new cc.Sprite(render.getSprite().texture);
-};
 
 
 var layer1;
@@ -118,14 +83,16 @@ var HelloWorldScene = cc.Scene.extend({
     }
 });
 
-
+//地鼠精灵
 var spriteMy = cc.Sprite.extend({
     Tag: 0,
     Text: 0,
     ctor: function () {
         this._super(res.zhuankuai);
-        color = new cc.Color(181, 114, 228);
-        this.setColor(color);
+        //color = new cc.Color(181, 114, 228);
+        //this.setColor(color);
+
+        this.schedule(this.do, 1);
 
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -134,8 +101,12 @@ var spriteMy = cc.Sprite.extend({
 
         }, this);
 
-    }
-    ,
+    },
+
+    do: function () {
+
+        this.removeFromParent();
+    },
 
     onTouchBegan: function (touch, event) {
         var target = event.getCurrentTarget();
@@ -147,13 +118,11 @@ var spriteMy = cc.Sprite.extend({
         var rect = cc.rect(0, 0, s.width, s.height);
         if (cc.rectContainsPoint(rect, locationInNode)) {
 
-            //alert(target.Text);
+            fenshu.fen++;
+            fenshu.settext();
 
-            //i = target.Text - 1;
-            ChangeButtonPosition(target); //被点击的按钮
-
-
-            //step += (i + 1) + " ";
+            this._texture1 = cc.textureCache.addImage(res.xuanyun);
+            target.texture = this._texture1;
 
             if (CheckForWin() == true) {
                 WonTheGame();
@@ -174,7 +143,6 @@ var spriteMy = cc.Sprite.extend({
     }
 
 });
-
 
 function ChangeButtonPosition(target) {
     {
@@ -258,59 +226,13 @@ function ChangeButtonPosition(target) {
 
 function CheckForWin() {
 
-    for (var i = 0; i < BUTTON_COUNT; i++) {
-        if (btn[i].hang == 1 && btn[i].lie == 1) {
-            if (btn[i].Text != 0)
-                return false;
-        } else if (btn[i].hang == 1 && btn[i].lie == 2) {
-            if (btn[i].Text != 1)
-                return false;
-        }
-        else if (btn[i].hang == 1 && btn[i].lie == 3) {
-            if (btn[i].Text != 2)
-                return false;
-        } else if (btn[i].hang == 1 && btn[i].lie == 4) {
-            if (btn[i].Text != 3)
-                return false;
-        } else if (btn[i].hang == 2 && btn[i].lie == 1) {
-            if (btn[i].Text != 4)
-                return false;
-        } else if (btn[i].hang == 2 && btn[i].lie == 2) {
-            if (btn[i].Text != 5)
-                return false;
-        } else if (btn[i].hang == 2 && btn[i].lie == 3) {
-            if (btn[i].Text != 6)
-                return false;
-        } else if (btn[i].hang == 2 && btn[i].lie == 4) {
-            if (btn[i].Text != 7)
-                return false;
-        } else if (btn[i].hang == 3 && btn[i].lie == 1) {
-            if (btn[i].Text != 8)
-                return false;
-        } else if (btn[i].hang == 3 && btn[i].lie == 2) {
-            if (btn[i].Text != 9)
-                return false;
-        } else if (btn[i].hang == 3 && btn[i].lie == 3) {
-            if (btn[i].Text != 10)
-                return false;
-        } else if (btn[i].hang == 3 && btn[i].lie == 4) {
-            if (btn[i].Text != 11)
-                return false;
-        } else if (btn[i].hang == 4 && btn[i].lie == 1) {
-            if (btn[i].Text != 12)
-                return false;
-        } else if (btn[i].hang == 4 && btn[i].lie == 2) {
-            if (btn[i].Text != 13)
-                return false;
-        } else if (btn[i].hang == 4 && btn[i].lie == 3) {
-            if (btn[i].Text != 14)
-                return false;
-        } else if (btn[i].hang == 4 && btn[i].lie == 4) {
-            if (btn[i].Text != 15)
-                return false;
-        }
+    if (fenshu.fen > 5) {
+        return true;
+
+    } else {
+        return false;
     }
-    return true;
+
 }
 
 function WonTheGame() {
@@ -325,40 +247,17 @@ function WonTheGame() {
 
     });
 
+    jishi.unscheduleAllCallbacks();
+    layer1.unscheduleAllCallbacks();
 
     label.runAction(
         cc.moveTo(2, cc.p(size.width / 2, size.height / 2))
     );
-}
 
-Array.prototype.remove = function (dx) {
-    if (isNaN(dx) || dx > this.length) {
-        return false;
-    }
-    for (var i = 0, n = 0; i < this.length; i++) {
-        if (this[i] != this[dx]) {
-            this[n++] = this[i]
-        }
-    }
-    this.length -= 1
+
+
 
 }
 
-Array.prototype.clone = function () {
-    var a = [];
-    for (var i = 0, l = this.length; i < l; i++) a.push(this[i]);
-    return a;
-}
 
-Array.prototype.exists = function (dx) {
-    if (isNaN(dx)) {
-        return false;
-    }
-    for (var i = 0, n = 0; i < this.length; i++) {
-        if (this[i] == dx) {
-            return true;
-        }
-    }
-    return false;
-}
 

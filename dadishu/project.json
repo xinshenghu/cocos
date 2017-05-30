@@ -14,6 +14,8 @@
     "src/resource.js",
     "src/app.js",
     "src/layerback.js",
+    "src/timer.js",
+    "src/common.js",
     "src/scenesuccess.js"
   ]
 }

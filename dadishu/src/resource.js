@@ -1,7 +1,8 @@
 var res = {
     bg: "res/bg.jpg",
     finish : "res/fin.jpg",
-    zhuankuai : "res/zhuankuai.jpg"
+    xuanyun : "res/xuanyun.png",
+    zhuankuai : "res/zhuankuai.png"
 };
 
 var g_resources = [];
