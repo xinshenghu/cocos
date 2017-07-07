@@ -2,7 +2,7 @@
 
 ## games
 [数独](https://xinshenghu.github.io/cocos/shudu/index.html) 
-[拼图](https://xinshenghu.github.io/cocos/fpintu/index.html) 
+[拼图](https://xinshenghu.github.io/cocos/pintuf/index.html) 
 
 ## Welcome to GitHub Pages
 
