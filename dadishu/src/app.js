@@ -125,7 +125,29 @@ var spriteMy = cc.Sprite.extend({
             target.texture = this._texture1;
 
             if (CheckForWin() == true) {
-                WonTheGame();
+                //WonTheGame();
+                jishi.unscheduleAllCallbacks();
+                layer1.unscheduleAllCallbacks();
+
+                var label = new cc.Sprite(res.finish);
+                label.setScale(2);
+                var size = cc.winSize;
+                layer1.addChild(label);
+                label.attr({
+                    x: size.width / 2,
+                    y: 0,
+
+                });
+
+                label.runAction(
+                    cc.moveTo(2, cc.p(size.width / 2, size.height / 2))
+                );
+
+                layer1.scheduleOnce(function () {
+
+
+                    cc.director.runScene(new HelloWorldScene());
+                }, 3);
             }
         }
     },

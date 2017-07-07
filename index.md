@@ -2,13 +2,7 @@
 
 ## games
 [数独](https://xinshenghu.github.io/cocos/shudu/index.html) 
-[拼图](https://xinshenghu.github.io/cocos/pintu/index.html) 
-[爱消除](https://xinshenghu.github.io/cocos/aixiaochu/index.html) 
-[扫雷](https://xinshenghu.github.io/cocos/saolei/index.html) 
-[纸牌](https://xinshenghu.github.io/cocos/zhipai/index.html) 
-[满堂红](https://xinshenghu.github.io/cocos/mantanghong/index.html) 
-[华容道](https://xinshenghu.github.io/cocos/huarongdao/index.html) 
-[打地鼠](https://xinshenghu.github.io/cocos/dadishu/index.html) 
+[拼图](https://xinshenghu.github.io/cocos/fpintu/index.html) 
 
 ## Welcome to GitHub Pages
 
