@@ -1,6 +1,7 @@
 
 
 ## games
+[数独1](https://xinshenghu.github.io/cocos/shudu/index.html)  
 
 
 ## Welcome to GitHub Pages
